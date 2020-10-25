@@ -1,12 +1,27 @@
 import React from 'react';
-import classes from './Header.module.css';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import RestaurantIcon from '@material-ui/icons/Restaurant';
 
 
-const Header = () => {
+const useStyles = makeStyles({
+    typographyStyles: {
+        flex: '1'
+    }
+})
+
+const Header: React.FC = () => {
+    const classes = useStyles();
+
     return (
-        <div className={classes.Header}>
-            <h1>Restaurant List</h1>
-        </div>
+        <AppBar position="static" >
+            <Toolbar>
+                <Typography className={classes.typographyStyles}>
+                        My preferite Restaurants
+                </Typography>
+                <RestaurantIcon />
+            </Toolbar>
+        </AppBar>
     )
 }
 

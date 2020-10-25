@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import RestaurantFinder from '../apis/RestaurantFinder'
 
+
 interface ParamTypes {
     id: string
 }
@@ -12,9 +13,10 @@ const UpdateRestaurant = () => {
         const fetchData = async () => {
             try {
                 const response = await RestaurantFinder.get(`/${id}`);
-                setName(response.data.data.restaurant.name);
-                setLocation(response.data.data.restaurant.location);
-                setPriceRange(response.data.data.restaurant.price_range);
+                console.log(response)
+                setName(response.data.data.restaurants.name);
+                setLocation(response.data.data.restaurants.location);
+                setPriceRange(response.data.data.restaurants.price_range);
             } catch (error) {
                 console.log(error)
             }
@@ -68,10 +70,7 @@ const UpdateRestaurant = () => {
                     id="price_range" />
 
                 <button  onClick={handleSubmit}>Submit</button>
-
-
             </form>
-
         </div>
     )
 }

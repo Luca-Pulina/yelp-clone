@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { RestaurantsContextProvider } from '../context/RestaurantContext';
-
+import Header from '../components/Header';
 import Home from './Home';
 import RestaurantDetail from './RestaurantDetail';
 import UpdatePage from './UpdatePage';
@@ -9,6 +9,7 @@ import UpdatePage from './UpdatePage';
 const RouterIndex = () => {
     return (
         <RestaurantsContextProvider>
+            <Header />
             <Router>
                 <Switch>
                     <Route exact path="/" component={Home} />

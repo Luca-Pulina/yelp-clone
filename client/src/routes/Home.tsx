@@ -1,15 +1,14 @@
 import React from 'react';
 import AddRestaurant from '../components/AddRestaurant';
-import Header from '../components/Header';
 import RestaurantList from '../components/RestaurantList';
+import { Grid } from '@material-ui/core';
 
-const Home = () => {
+const Home: React.FC = () => {
     return (
-        <div >
-            <Header />
-            <AddRestaurant />
-            <RestaurantList/>
-        </div>
+            <Grid container direction="column">
+                <AddRestaurant />
+                <RestaurantList />
+            </Grid>
     )
 }
 
