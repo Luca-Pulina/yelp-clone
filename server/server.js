@@ -46,11 +46,11 @@ app.get('/api/v1/restaurants', cors(corsOptions), async (req, res) => {
 
 app.get('/api/v1/restaurants/:id', async (req, res) => {
 
-    //const restaurants = await db.query(`SELECT * FROM restaurants WHERE id = ${req.params.id}`)
+//    const restaurants = await db.query(`SELECT * FROM restaurants WHERE id = ${req.params.id}`)
     const restaurants = await db.query(`SELECT * FROM restaurants
         LEFT JOIN (SELECT restaurant_id, count(*), TRUNC(AVG(rating),1) as average_rating
         FROM reviews GROUP BY restaurant_id) reviews ON restaurants.id = reviews.restaurant_id where id = ${req.params.id}`)
-    //const reviews = await db.query(`SELECT * FROM reviews WHERE restaurant_id = ${req.params.id}`)
+    const reviews = await db.query(`SELECT * FROM reviews WHERE restaurant_id = ${req.params.id}`)
 
     try {
         res.status(200).json({
@@ -107,7 +107,7 @@ app.put('/api/v1/restaurants/:id', async (req, res) => {
         res.status(200).json({
             status: "succes",
             data: {
-                retaurant: results.rows[0],
+                restaurant: results.rows[0],
             },
         });
     } catch (error) {
